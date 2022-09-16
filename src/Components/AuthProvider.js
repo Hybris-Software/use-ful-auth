@@ -5,7 +5,7 @@ import { ApiProvider } from "@hybris-software/use-query";
 
 const AuthProvider = ({ children, apiClient, authUrl }) => {
     return (
-        <AuthProviderContext.Provider authUrl={authUrl}>
+        <AuthProviderContext.Provider value={authUrl}>
             <ApiProvider apiClient={apiClient}>
                 {children}
             </ApiProvider>
