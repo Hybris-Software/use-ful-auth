@@ -9,20 +9,22 @@ import LoaderGlobal from "./LoaderGlobal/LoaderGlobal";
 // Context
 import AuthProviderContext from "../Context/AuthProviderContext";
 
-const AuthRoute = ({ children, forLoggedUser, action, loader }) => {
+const AuthRoute = ({
+  children,
+  forLoggedUser,
+  action,
+  loader = <LoaderGlobal />,
+}) => {
   const authUrl = useContext(AuthProviderContext);
   const { isLogged } = useAuth({ url: authUrl });
 
-  const loader = loader ? loader : <LoaderGlobal />;
   return (
     <>
-      {isLogged === undefined ? (
-        loader
-      ) : isLogged === forLoggedUser ? (
-        children
-      ) : (
-        action()
-      )}
+      {isLogged === undefined
+        ? loader
+        : isLogged === forLoggedUser
+        ? children
+        : action()}
     </>
   );
 };
