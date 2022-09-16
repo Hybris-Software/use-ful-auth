@@ -13,11 +13,11 @@ const AuthRoute = ({ children, forLoggedUser, action, loader }) => {
   const authUrl = useContext(AuthProviderContext);
   const { isLogged } = useAuth({ url: authUrl });
 
-  const Loader = loader ? loader : <LoaderGlobal />;
+  const loader = loader ? loader : <LoaderGlobal />;
   return (
     <>
       {isLogged === undefined ? (
-        <Loader />
+        {loader}
       ) : isLogged === forLoggedUser ? (
         children
       ) : (
