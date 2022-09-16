@@ -1,0 +1,39 @@
+{
+  "name": "@hybris-software/use-auth",
+  "version": "1.0.0",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@hybris-software/use-query": "^1.2.0",
+    "axios": "^0.27.2",
+    "react": "^18.2.0",
+    "react-loading-icons": "^1.1.0"
+  },
+  "description": "Simple way to dispatch the user based on it's status (logged in/not logged in)",
+  "license": "MIT",
+  "repository": "Hybris-Software/useAuth",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "javascript",
+    "axios",
+    "auth",
+    "npm",
+    "user-status",
+    "react-package"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
+    "publish": "npm run build && npm publish"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6"
+  }
+}
