@@ -6,6 +6,9 @@ import useAuth from "../Hooks/useAuth";
 //Componeets
 import LoaderGlobal from "./LoaderGlobal/LoaderGlobal";
 
+// Context
+import AuthProviderContext from "../Context/AuthProviderContext";
+
 const AuthRoute = ({
   children,
   forLoggedUser,
