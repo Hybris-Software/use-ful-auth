@@ -23,13 +23,14 @@ const AuthRoute = ({
     if (isLogged !== undefined) {
       setTimeout(() => {
         setLoading(false);
+        if (isLogged !== forLoggedUser) {
+          action();
+        }
       }, 1000);
     }
   }, [isLogged]);
 
-  return (
-    <>{loading ? loader : isLogged === forLoggedUser ? children : action()}</>
-  );
+  return <>{loading ? loader : isLogged === forLoggedUser && children}</>;
 };
 
 export default AuthRoute;
