@@ -1,8 +1,9 @@
 {
   "name": "@hybris-software/use-auth",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@babel/preset-react": "^7.18.6",
     "@hybris-software/use-query": "^1.2.0",
     "axios": "^0.27.2",
     "react": "^18.2.0",
@@ -27,13 +28,12 @@
     "react-package"
   ],
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "publish": "npm run build && npm publish"
+    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.19.1",
-    "@babel/preset-react": "^7.18.6"
+    "@babel/plugin-syntax-jsx": "^7.18.6",
+    "@babel/preset-env": "^7.19.1"
   }
 }
