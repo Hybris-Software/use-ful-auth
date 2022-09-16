@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Hooks
 import useAuth from "../Hooks/useAuth";
@@ -17,15 +17,18 @@ const AuthRoute = ({
 }) => {
   const authUrl = useContext(AuthProviderContext);
   const { isLogged } = useAuth({ url: authUrl });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLogged !== undefined) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+  }, [isLogged]);
 
   return (
-    <>
-      {isLogged === undefined
-        ? loader
-        : isLogged === forLoggedUser
-        ? children
-        : action()}
-    </>
+    <>{loading ? loader : isLogged === forLoggedUser ? children : action()}</>
   );
 };
 

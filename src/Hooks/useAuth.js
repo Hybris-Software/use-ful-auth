@@ -25,4 +25,3 @@ const useAuth = ({ url, method = "GET" }) => {
 }
 
 export default useAuth;
-''
