@@ -17,7 +17,7 @@ const AuthRoute = ({ children, forLoggedUser, action, loader }) => {
   return (
     <>
       {isLogged === undefined ? (
-        {loader}
+        loader
       ) : isLogged === forLoggedUser ? (
         children
       ) : (
