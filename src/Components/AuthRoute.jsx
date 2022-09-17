@@ -13,6 +13,7 @@ const AuthRoute = ({
   children,
   forLoggedUser,
   action,
+  minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
 }) => {
   const authUrl = useContext(AuthProviderContext);
@@ -26,7 +27,7 @@ const AuthRoute = ({
         if (isLogged !== forLoggedUser) {
           action();
         }
-      }, 100000);
+      }, minimumLoadingTime);
     }
   }, [isLogged]);
 
