@@ -98,8 +98,8 @@ import { useAuth } from "@hybris-software/use-auth";
 const Login = () => {
   const { isLogged, isLoading, isError, isSuccess, data, error, executeQuery } =
     useAuth({
-      url: "/login",
-      method: "POST",
+      url: "/user/",
+      method: "GET",
       executeImmediately: false,
       onSuccess: (response) => {
         console.log("Login success");
@@ -112,13 +112,13 @@ const Login = () => {
       },
     });
 
-  const login = () => {
-    executeQuery({ username: "admin", password: "admin" });
+  const checkUserStatus = () => {
+    executeQuery();
   };
 
   return (
     <div>
-      <button onClick={login}>Login</button>
+      <button onClick={checkUserStatus}>Login</button>
     </div>
   );
 };
@@ -135,8 +135,8 @@ import { useAuth } from "@hybris-software/use-auth";
 const Login = () => {
   const { isLogged, isLoading, isError, isSuccess, data, error, executeQuery } =
     useAuth({
-      url: "/login",
-      method: "POST",
+      url: "/user/",
+      method: "GET",
       executeImmediately: true,
       onSuccess: (response) => {
         console.log("Login success");
