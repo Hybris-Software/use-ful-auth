@@ -26,7 +26,7 @@ const AuthRoute = ({
         if (isLogged !== forLoggedUser) {
           action();
         }
-      }, 1000);
+      }, 100000);
     }
   }, [isLogged]);
 

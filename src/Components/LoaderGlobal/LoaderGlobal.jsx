@@ -9,7 +9,7 @@ import { TailSpin } from "react-loading-icons";
 const LoaderGlobal = () => {
   return (
     <div className={Style.globalLoader}>
-      <TailSpin color="black" />
+      <TailSpin stroke="black" />
     </div>
   );
 };
