@@ -26,7 +26,8 @@ Install the library with `npm install @hybris-software/use-auth`.
 At the upper level of the application you should insert the `AuthProvider` with an api client and authUrl as in the example below:
 
 ```javascript
-import { generateApiClient, ApiProvider } from "@hybris-software/use-query";
+import { generateApiClient } from "@hybris-software/use-query";
+import { AuthProvider } from "@hybris-software/use-auth";
 ...
 const apiClient = generateApiClient({
   baseUrl = "https://my.api.com/api/v1",
@@ -34,15 +35,16 @@ const apiClient = generateApiClient({
   authorizationPrefix = "Bearer"
 })
 
+
 // Or build your own apiClient whatever you want
 
 const authUrl = "https://my.api.com/api/v1/auth";
 ...
 root.render(
   <React.StrictMode>
-    <ApiProvider apiClient={apiClient} authUrl={authUrl}>
+    <AuthProvider apiClient={apiClient} authUrl={authUrl}>
       <App />
-    </ApiProvider>
+    </AuthProvider>
   </React.StrictMode >
 );
 ```
