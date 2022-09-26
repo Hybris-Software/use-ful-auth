@@ -17,30 +17,17 @@ const AuthRoute = ({
   loader = <LoaderGlobal />,
 }) => {
   const authUrl = useContext(AuthProviderContext);
-  const { isLogged, executeQuery } = useAuth({
-    url: authUrl,
-    executeImmediately: false,
-  });
+  const { isLogged } = useAuth({ url: authUrl });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      executeQuery();
-      if (isLogged !== undefined) {
-        setTimeout(() => {
-          setLoading(false);
-          if (isLogged !== forLoggedUser) {
-            action();
-          }
-        }, minimumLoadingTime);
-      }
-    } else {
-      setLoading(false);
-      if (forLoggedUser === false) {
-        action();
-      }
+    if (isLogged !== undefined) {
+      setTimeout(() => {
+        setLoading(false);
+        if (isLogged !== forLoggedUser) {
+          action();
+        }
+      }, minimumLoadingTime);
     }
   }, [isLogged]);
 

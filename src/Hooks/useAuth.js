@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Hooks
 import useQuery from "@hybris-software/use-query/dist/Hooks/useQuery";
 
 const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = () => { }, onUnauthorized = () => { }, onError = () => { } }) => {
-    const [isLogged, setIsLogged] = useState(undefined);
 
+    const [isLogged, setIsLogged] = useState(undefined);
     const { isLoading, isError, isSuccess, data, error, executeQuery } = useQuery({
         url: url,
         method: method,
-        executeImmediately: executeImmediately,
+        executeImmediately: false,
         onSuccess: (response) => {
             setIsLogged(true);
             onSuccess(response);
@@ -24,6 +24,17 @@ const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = (
             onError(error);
         }
     })
+
+    useEffect(() => {
+        if (executeImmediately) {
+            if (localStorage.getItem("token")) {
+                executeQuery()
+            } else {
+                setIsLogged(false)
+                onUnauthorized();
+            }
+        }
+    }, [])
 
     return {
         isLogged: isLogged,
