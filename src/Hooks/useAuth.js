@@ -15,6 +15,7 @@ const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = (
             onSuccess(response);
         },
         onUnauthorized: (error) => {
+            localStorage.removeItem("token");
             setIsLogged(false);
             onUnauthorized(error);
         },
