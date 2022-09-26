@@ -38,7 +38,7 @@ const AuthRoute = ({
       }
     } else {
       setLoading(false);
-      if (isLogged !== forLoggedUser) {
+      if (forLoggedUser === false) {
         action();
       }
     }
