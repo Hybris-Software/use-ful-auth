@@ -26,7 +26,7 @@ const AuthRoute = ({
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (token) {
+    if (token !== null) {
       executeQuery();
       if (isLogged !== undefined) {
         setTimeout(() => {
