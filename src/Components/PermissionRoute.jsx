@@ -29,14 +29,13 @@ const PermissionRoute = ({
 
   useEffect(() => {
     setPermission(false);
-
     setTimeout(() => {
       setLoading(false);
     }, minimumLoadingTime);
   }, []);
 
   useEffect(() => {
-    if (isLogged !== undefined) {
+    if (isLogged !== undefined && loading === false) {
       if (isLogged !== forLoggedUser) {
         unAuthorizedAction();
       } else {

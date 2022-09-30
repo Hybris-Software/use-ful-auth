@@ -27,7 +27,7 @@ const AuthRoute = ({
   }, []);
 
   useEffect(() => {
-    if (isLogged !== undefined) {
+    if (isLogged !== undefined && loading === false) {
       if (isLogged !== forLoggedUser) {
         action();
       }
