@@ -1,6 +1,6 @@
 {
   "name": "@hybris-software/use-auth",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-react": "^7.18.6",
