@@ -46,7 +46,7 @@ const PermissionRoute = ({
         }
       }
     }
-  }, [isLogged]);
+  }, [isLogged, loading]);
 
   if (loading || isLoading || permission === false) {
     return loader;

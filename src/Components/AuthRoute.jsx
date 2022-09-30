@@ -32,7 +32,7 @@ const AuthRoute = ({
         action();
       }
     }
-  }, [isLogged]);
+  }, [isLogged, loading]);
 
   if (loading || isLoading) {
     return loader;
