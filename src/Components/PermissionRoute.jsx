@@ -26,7 +26,7 @@ const PermissionRoute = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPermission(undefined);
+    setPermission(false);
 
     setTimeout(() => {
       setLoading(false);
@@ -47,7 +47,7 @@ const PermissionRoute = ({
     }
   }, [isLogged]);
 
-  if (loading || isLoading || permission === undefined) {
+  if (loading || isLoading || permission === false) {
     return loader;
   } else if (isLogged === forLoggedUser && permission) {
     return children;
