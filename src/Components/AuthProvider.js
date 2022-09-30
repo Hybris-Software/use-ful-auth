@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+
+// Contexts
 import AuthProviderContext from "../Context/AuthProviderContext";
+import PermissionProviderContext from "../Context/PermissionProviderContext";
 
 import { ApiProvider } from "@hybris-software/use-query";
 
 const AuthProvider = ({ children, apiClient, authUrl }) => {
+
+    const [permission, setPermission] = useState(false);
+
     return (
         <AuthProviderContext.Provider value={authUrl}>
-            <ApiProvider apiClient={apiClient}>
-                {children}
-            </ApiProvider>
-        </AuthProviderContext.Provider>
+            <PermissionProviderContext.Provider value={[permission, setPermission]}>
+                <ApiProvider apiClient={apiClient}>
+                    {children}
+                </ApiProvider>
+            </PermissionProviderContext.Provider>
+        </AuthProviderContext.Provider >
     );
 };
 
