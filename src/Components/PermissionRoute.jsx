@@ -17,7 +17,9 @@ const PermissionRoute = ({
   forbiddenAction,
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
-  permissionController = () => {},
+  permissionController = () => {
+    return true;
+  },
 }) => {
   const authUrl = useContext(AuthProviderContext);
   const [permission, setPermission] = useContext(PermissionProviderContext);

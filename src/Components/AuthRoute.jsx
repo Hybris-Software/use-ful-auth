@@ -23,11 +23,16 @@ const AuthRoute = ({
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
+    }, minimumLoadingTime);
+  }, []);
+
+  useEffect(() => {
+    if (isLogged !== undefined) {
       if (isLogged !== forLoggedUser) {
         action();
       }
-    }, minimumLoadingTime);
-  }, []);
+    }
+  }, [isLogged]);
 
   if (loading || isLoading) {
     return loader;
