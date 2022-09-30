@@ -17,21 +17,25 @@ const AuthRoute = ({
   loader = <LoaderGlobal />,
 }) => {
   const authUrl = useContext(AuthProviderContext);
-  const { isLogged } = useAuth({ url: authUrl });
+  const { isLogged, isLoading } = useAuth({ url: authUrl });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (isLogged !== undefined) {
-      setTimeout(() => {
-        setLoading(false);
-        if (isLogged !== forLoggedUser) {
-          action();
-        }
-      }, minimumLoadingTime);
-    }
-  }, [isLogged]);
+    setTimeout(() => {
+      setLoading(false);
+      if (isLogged !== forLoggedUser) {
+        action();
+      }
+    }, minimumLoadingTime);
+  }, []);
 
-  return <>{loading ? loader : isLogged === forLoggedUser && children}</>;
+  if (loading || isLoading) {
+    return loader;
+  } else if (isLogged === forLoggedUser) {
+    return children;
+  } else {
+    return <></>;
+  }
 };
 
 export default AuthRoute;

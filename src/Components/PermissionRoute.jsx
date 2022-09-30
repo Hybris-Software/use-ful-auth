@@ -13,13 +13,12 @@ import PermissionProviderContext from "../Context/PermissionProviderContext";
 const PermissionRoute = ({
   children,
   forLoggedUser,
-  unauthorizedAction,
+  unAuthorizedAction,
   forbiddenAction,
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
   permissionController = () => {},
 }) => {
-    
   const authUrl = useContext(AuthProviderContext);
   const [permission, setPermission] = useContext(PermissionProviderContext);
 
@@ -27,7 +26,7 @@ const PermissionRoute = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPermission(false);
+    setPermission(undefined);
 
     setTimeout(() => {
       setLoading(false);
@@ -37,7 +36,7 @@ const PermissionRoute = ({
   useEffect(() => {
     if (isLogged !== undefined) {
       if (isLogged !== forLoggedUser) {
-        unauthorizedAction();
+        unAuthorizedAction();
       } else {
         if (permissionController(data)) {
           setPermission(true);
@@ -48,7 +47,7 @@ const PermissionRoute = ({
     }
   }, [isLogged]);
 
-  if (loading || isLoading) {
+  if (loading || isLoading || permission === undefined) {
     return loader;
   } else if (isLogged === forLoggedUser && permission) {
     return children;

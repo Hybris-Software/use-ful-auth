@@ -8,7 +8,7 @@ import { ApiProvider } from "@hybris-software/use-query";
 
 const AuthProvider = ({ children, apiClient, authUrl }) => {
 
-    const [permission, setPermission] = useState(false);
+    const [permission, setPermission] = useState(undefined);
 
     return (
         <AuthProviderContext.Provider value={authUrl}>
