@@ -18,7 +18,7 @@ const PermissionRoute = ({
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
   permissionController = () => {
-    return true;
+    return { value: true };
   },
 }) => {
   const authUrl = useContext(AuthProviderContext);
@@ -39,7 +39,7 @@ const PermissionRoute = ({
       if (isLogged !== forLoggedUser) {
         unAuthorizedAction();
       } else {
-        if (permissionController(data)) {
+        if (permissionController(data).value) {
           setPermission(true);
         } else {
           forbiddenAction();
