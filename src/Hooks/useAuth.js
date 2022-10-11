@@ -27,12 +27,7 @@ const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = (
 
     useEffect(() => {
         if (executeImmediately) {
-            if (localStorage.getItem("token")) {
-                executeQuery()
-            } else {
-                setIsLogged(false)
-                onUnauthorized();
-            }
+            executeQuery()
         }
     }, [])
 
