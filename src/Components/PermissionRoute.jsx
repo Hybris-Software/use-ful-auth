@@ -39,10 +39,11 @@ const PermissionRoute = ({
       if (isLogged !== forLoggedUser) {
         unAuthorizedAction();
       } else {
-        if (permissionController(data).value) {
+        const permissionControllerResult = permissionController(data);
+        if (permissionControllerResult.value) {
           setPermission(true);
         } else {
-          forbiddenAction();
+          forbiddenAction(permissionControllerResult);
         }
       }
     }
