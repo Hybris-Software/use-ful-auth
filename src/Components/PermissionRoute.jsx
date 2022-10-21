@@ -14,7 +14,6 @@ const PermissionRoute = ({
   children,
   forLoggedUser,
   unAuthorizedAction,
-  forbiddenAction,
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
   permissionController = () => {
@@ -40,11 +39,7 @@ const PermissionRoute = ({
         unAuthorizedAction();
       } else {
         const permissionControllerResult = permissionController(data);
-        if (permissionControllerResult.value) {
-          setPermission(true);
-        } else {
-          forbiddenAction(permissionControllerResult);
-        }
+        setPermission(permissionControllerResult || false);
       }
     }
   }, [isLogged, loading]);
