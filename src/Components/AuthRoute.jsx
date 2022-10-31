@@ -15,6 +15,7 @@ const AuthRoute = ({
   action,
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
+  apiLoading = false,
 }) => {
   const authUrl = useContext(AuthProviderContext);
   const { isLogged, isLoading } = useAuth({ url: authUrl });
@@ -34,7 +35,7 @@ const AuthRoute = ({
     }
   }, [isLogged, loading]);
 
-  if (loading || isLoading) {
+  if (loading || isLoading || apiLoading) {
     return loader;
   } else if (isLogged === forLoggedUser) {
     return children;
