@@ -16,8 +16,9 @@ const PermissionRoute = ({
   unAuthorizedAction,
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
+  apiLoading = false,
   permissionController = () => {
-    return { value: true };
+    return strue;
   },
 }) => {
   const authUrl = useContext(AuthProviderContext);
@@ -44,7 +45,7 @@ const PermissionRoute = ({
     }
   }, [isLogged, loading]);
 
-  if (loading || isLoading || permission === false) {
+  if (loading || isLoading || permission === false || apiLoading) {
     return loader;
   } else if (isLogged === forLoggedUser && permission) {
     return children;
