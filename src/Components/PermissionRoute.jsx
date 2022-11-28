@@ -18,7 +18,7 @@ const PermissionRoute = ({
   loader = <LoaderGlobal />,
   apiLoading = false,
   permissionController = () => {
-    return strue;
+    return true;
   },
 }) => {
   const authUrl = useContext(AuthProviderContext);
