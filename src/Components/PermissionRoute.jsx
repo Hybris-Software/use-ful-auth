@@ -16,6 +16,7 @@ const PermissionRoute = ({
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
   apiLoading = false,
+  firstApiLoading = false,
   permissionController = () => {
     return true;
   },
@@ -25,12 +26,19 @@ const PermissionRoute = ({
 
   const { isLogged, isLoading, data } = useAuth({ url: authUrl });
   const [loading, setLoading] = useState(true);
+  const [firstLoading, setFirstLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, minimumLoadingTime);
   }, []);
+
+  useEffect(() => {
+    if (firstApiLoading === false) {
+      setFirstLoading(false);
+    }
+  }, [firstApiLoading]);
 
   useEffect(() => {
     if (isLogged !== undefined && loading === false) {
@@ -43,7 +51,7 @@ const PermissionRoute = ({
     }
   }, [isLogged, loading]);
 
-  if (loading || isLoading || permission === false || apiLoading) {
+  if (loading || isLoading || permission === false || apiLoading || (firstApiLoading && firstLoading)) {
     return loader;
   } else if (isLogged === forLoggedUser && permission) {
     return children;

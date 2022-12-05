@@ -16,16 +16,24 @@ const AuthRoute = ({
   minimumLoadingTime = 1000,
   loader = <LoaderGlobal />,
   apiLoading = false,
+  firstApiLoading = false,
 }) => {
   const authUrl = useContext(AuthProviderContext);
   const { isLogged, isLoading } = useAuth({ url: authUrl });
   const [loading, setLoading] = useState(true);
+  const [firstLoading, setFirstLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, minimumLoadingTime);
   }, []);
+
+  useEffect(() => {
+    if (firstApiLoading === false) {
+      setFirstLoading(false);
+    }
+  }, [firstApiLoading]);
 
   useEffect(() => {
     if (isLogged !== undefined && loading === false) {
@@ -35,7 +43,7 @@ const AuthRoute = ({
     }
   }, [isLogged, loading]);
 
-  if (loading || isLoading || apiLoading) {
+  if (loading || isLoading || apiLoading || (firstApiLoading && firstLoading)) {
     return loader;
   } else if (isLogged === forLoggedUser) {
     return children;
