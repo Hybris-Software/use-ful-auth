@@ -8,7 +8,6 @@ import LoaderGlobal from "./LoaderGlobal/LoaderGlobal";
 
 // Context
 import AuthProviderContext from "../Context/AuthProviderContext";
-import PermissionProviderContext from "../Context/PermissionProviderContext";
 
 const PermissionRoute = ({
   children,
@@ -22,13 +21,12 @@ const PermissionRoute = ({
   },
 }) => {
   const authUrl = useContext(AuthProviderContext);
-  const [permission, setPermission] = useContext(PermissionProviderContext);
+  const [permission, setPermission] = useState(false);
 
   const { isLogged, isLoading, data } = useAuth({ url: authUrl });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPermission(false);
     setTimeout(() => {
       setLoading(false);
     }, minimumLoadingTime);
