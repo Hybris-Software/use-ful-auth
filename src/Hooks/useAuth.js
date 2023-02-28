@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // Hooks
 import useQuery from "@hybris-software/use-query/dist/Hooks/useQuery";
 
-const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = () => { }, onUnauthorized = () => { }, onError = () => { } }) => {
+// Contexts
+import UserInfoContext from "../Context/UserInfoContext";
 
+
+const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = () => { }, onUnauthorized = () => { }, onError = () => { } }) => {
+    const { setUserInfo } = useContext(UserInfoContext);
     const [isLogged, setIsLogged] = useState(undefined);
     const { isLoading, isError, isSuccess, data, error, executeQuery } = useQuery({
         url: url,
@@ -12,6 +16,7 @@ const useAuth = ({ url, method = "GET", executeImmediately = true, onSuccess = (
         executeImmediately: false,
         onSuccess: (response) => {
             setIsLogged(true);
+            setUserInfo(response.data);
             onSuccess(response);
         },
         onUnauthorized: (error) => {
