@@ -1,23 +1,16 @@
 {
-  "name": "@hybris-software/use-auth",
-  "version": "1.3.3",
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-react": "^7.18.6",
-    "@hybris-software/use-query": "^1.2.0",
-    "axios": "^0.27.2",
-    "react": "^18.2.0",
-    "react-loading-icons": "^1.1.0"
-  },
+  "name": "@hybris-software/use-ful-auth",
+  "version": "2.0.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "description": "Simple way to dispatch the user based on it's status (logged in/not logged in)",
   "license": "MIT",
   "repository": "Hybris-Software/useAuth",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "keywords": [
     "react",
     "javascript",
@@ -28,12 +21,28 @@
     "react-package"
   ],
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
+    "build": "rimraf dist && rollup -c",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@hybris-software/use-query": "^1.2.0",
+    "axios": "^0.27.2",
+    "react-loading-icons": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.19.1",
-    "@babel/plugin-syntax-jsx": "^7.18.6",
-    "@babel/preset-env": "^7.19.1"
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.2.67",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.5",
+    "rollup": "^4.13.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.4.3"
   }
 }
