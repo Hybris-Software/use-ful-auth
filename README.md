@@ -95,7 +95,7 @@ root.render(
 If you set the parameter executeImmediately as `false` you can trigger the query with the `executeQuery` function. This is useful if you want to execute the query only when the user clicks on a button.
 
 ```javascript
-import { useAuth } from "@hybris-software/use-auth";
+import { useAuth } from "@hybris-software/use-auth"
 
 const Login = () => {
   const { isLogged, isLoading, isError, isSuccess, data, error, executeQuery } =
@@ -104,26 +104,26 @@ const Login = () => {
       method: "GET",
       executeImmediately: false,
       onSuccess: (response) => {
-        console.log("Login success");
+        console.log("Login success")
       },
       onUnauthorized: (response) => {
-        console.log("Login failed");
+        console.log("Login failed")
       },
       onError: (response) => {
-        console.log("Login failed");
+        console.log("Login failed")
       },
-    });
+    })
 
   const checkUserStatus = () => {
-    executeQuery();
-  };
+    executeQuery()
+  }
 
   return (
     <div>
       <button onClick={checkUserStatus}>Login</button>
     </div>
-  );
-};
+  )
+}
 ```
 
 ### Example 2: useAuth
@@ -131,8 +131,8 @@ const Login = () => {
 If you set the parameter executeImmediately as `true` the query will be executed when the component is created. This is useful if you want to check if the user is logged when the page is loaded.
 
 ```javascript
-import React, { useEffect } from "react";
-import { useAuth } from "@hybris-software/use-auth";
+import React, { useEffect } from "react"
+import { useAuth } from "@hybris-software/use-auth"
 
 const Login = () => {
   const { isLogged, isLoading, isError, isSuccess, data, error, executeQuery } =
@@ -141,15 +141,15 @@ const Login = () => {
       method: "GET",
       executeImmediately: true,
       onSuccess: (response) => {
-        console.log("Login success");
+        console.log("Login success")
       },
       onUnauthorized: (response) => {
-        console.log("Login failed");
+        console.log("Login failed")
       },
       onError: (response) => {
-        console.log("Login failed");
+        console.log("Login failed")
       },
-    });
+    })
 
   return (
     <div>
@@ -161,14 +161,14 @@ const Login = () => {
         <div>Not logged</div>
       )}
     </div>
-  );
-};
+  )
+}
 ```
 
 ### Example 3: AuthRoute
 
 ```javascript
-import { AuthRoute } from "@hybris-software/use-auth";
+import { AuthRoute } from "@hybris-software/use-auth"
 
 const App = () => {
   return (
@@ -178,11 +178,11 @@ const App = () => {
       loader={<CustomLoader />} // leave it undefined if you want to use the built in Loader
       action={() => {
         // Function executed when the user is redirected
-        navigate("/");
+        navigate("/")
       }}
     >
       // Your view
     </AuthRoute>
-  );
-};
+  )
+}
 ```

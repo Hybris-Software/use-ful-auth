@@ -1,19 +1,20 @@
 .globalLoader {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .defaultLoaderImage {
-    max-width: 500px;
-    max-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 500px;
+  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
