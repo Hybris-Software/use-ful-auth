@@ -1,16 +1,8 @@
 {
-  "name": "@hybris-software/use-ful-auth",
-  "version": "2.0.0",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.mjs",
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "name": "@hybrissoftware/use-ful-auth",
   "description": "Simple way to dispatch the user based on it's status (logged in/not logged in)",
-  "license": "MIT",
-  "repository": "Hybris-Software/useAuth",
+  "version": "0.1.0",
+  "repository": "hybris-software/use-ful-auth",
   "keywords": [
     "react",
     "javascript",
@@ -20,12 +12,19 @@
     "user-status",
     "react-package"
   ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@hybris-software/use-query": "^1.2.0",
+    "@hybrissoftware/use-ful-query": "^1.0.2",
     "axios": "^0.27.2",
     "react-loading-icons": "^1.1.0"
   },

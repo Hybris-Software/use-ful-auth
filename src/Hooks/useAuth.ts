@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 
 // Hooks
-import useQuery from "@hybris-software/use-query/dist/Hooks/useQuery"
+import useQuery from "@hybrissoftware/use-ful-query"
 
 // Contexts
 import UserInfoContext from "../Context/UserInfoContext"

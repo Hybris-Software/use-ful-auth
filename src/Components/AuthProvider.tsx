@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 // Hooks
-import { ApiProvider } from "@hybris-software/use-query"
+import { ApiProvider } from "@hybrissoftware/use-ful-query"
 
 // Contexts
 import AuthProviderContext from "../Context/AuthProviderContext"
